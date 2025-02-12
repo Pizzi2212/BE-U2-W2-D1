@@ -3,10 +3,6 @@ package com.demo.BE_U2_W2_D1.autore;
 
 import com.demo.BE_U2_W2_D1.responses.CreateResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +15,9 @@ public class AutoreController {
     private final AutoreService autoreService;
 
     @GetMapping
-    private Page<Autore> findAll(@RequestParam int page, @RequestParam int recordPerPagina, @RequestParam String sortBy) {
-        Pageable pageable = PageRequest.of(page, recordPerPagina, Sort.by(sortBy));
-        return autoreService.findAll(pageable);
+    @ResponseStatus(HttpStatus.OK)
+    public List<Autore> findAll() {
+        return autoreService.findAll();
     }
 
     @GetMapping("/{id}")

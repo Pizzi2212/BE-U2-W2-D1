@@ -5,6 +5,8 @@ import com.demo.BE_U2_W2_D1.responses.CreateResponse;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +16,9 @@ import java.util.List;
 public class AutoreService {
       private final AutoreRepository autoreRepository;
 
-      public List<Autore> findAll() {
-          return autoreRepository.findAll();
-      }
+    public Page<Autore> findAll(Pageable pageable) {
+        return autoreRepository.findAll(pageable);
+    }
 
     public Autore findById(Long id) {
        if(!autoreRepository.existsById(id)){

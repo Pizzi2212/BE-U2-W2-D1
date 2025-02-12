@@ -22,7 +22,6 @@ public class Post {
     private String contenuto;
     private double tempoDiLettura;
 
-
     @ManyToOne
     private Autore autore;
 }
